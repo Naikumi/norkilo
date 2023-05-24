@@ -72,6 +72,7 @@ void execute_child_process(int argc, char *argv[], char **env)
             free(result);
             free(tokenizado);
             perror(argv[0]);
+	    exit(EXIT_FAILURE);
             if (val_fd == 0)
                 exit(2);
             return;
