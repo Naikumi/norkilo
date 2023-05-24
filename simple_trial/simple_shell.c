@@ -11,7 +11,7 @@ void prompt_and_read_input(char **con, ssize_t *ch, int value_fd)
 	if (value_fd != 0)
 	write(1, "#cisfun$ ", 10);
 
-	*con = read_line(c);
+	*con = read_lines(ch);
 
 	if (*ch == EOF)
 	{
@@ -82,7 +82,7 @@ void execute_child_process(int argc, char *argv[], char **environ)
 
 	handle_built_in_commands(tokenizado, environ);
 
-	result = l_path(tokenizado[0], environ);
+	result = _path(tokenizado[0], environ);
 
 	if (execve(result, tokenizado, NULL) == -1)
 	{
