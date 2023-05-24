@@ -1,5 +1,11 @@
-#include "functions.h"
-
+#include "main.h"
+/**
+ * prompt_and_read_input - prompts the user for input
+ * @con: stores the line of input
+ * @ch: number of chars read
+ * @value_fd: input from user
+ * Return: nothing
+ */
 void prompt_and_read_input(char **con, ssize_t *ch, int value_fd)
 {
 	if (value_fd != 0)
@@ -20,7 +26,12 @@ void prompt_and_read_input(char **con, ssize_t *ch, int value_fd)
 		return;
 	}
 }
-
+/**
+ * handle_built_in_commands - handles builtin commands
+ * @tokenizado: array of strings to tokenize
+ * @environ: array representing the environment variables
+ * Return: nothing
+ */
 void handle_built_in_commands(char **tokenizado, char **environ)
 {
 	int comp = _strcmp(tokenizado[0], "exit");
@@ -45,7 +56,13 @@ void handle_built_in_commands(char **tokenizado, char **environ)
 		}
 	}
 }
-
+/**
+ * execute_child_process - executes the child process in the shell
+ * @argc: number of command-line arguments
+ * @argv: array of command-line arguments
+ * @environ: environment variables
+ * Return: nothing
+ */
 void execute_child_process(int argc, char *argv[], char **environ)
 {
 	char *con, *result;
@@ -79,7 +96,13 @@ void execute_child_process(int argc, char *argv[], char **environ)
 	}
 	}
 }
-
+/**
+ * main - main function
+ * @argv: array of arguments to pass
+ * @argc: number of arguments
+ * @environ: environmental variables
+ * Return:  Always(success) 0
+ */
 int main(int argc, char *argv[], char **environ)
 {
 	int status = 0, value_fd = 0;
